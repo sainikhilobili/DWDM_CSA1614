@@ -1,0 +1,33 @@
+# Lower and upper class limits
+lower <- c(1, 5, 15, 20, 50, 80)
+upper <- c(5, 15, 20, 50, 80, 110)
+
+# Frequencies
+frequency <- c(200, 450, 300, 1500, 700, 44)
+
+# Total frequency
+N <- sum(frequency)
+
+# Cumulative frequency
+cf <- cumsum(frequency)
+
+# Find the median class
+i <- min(which(cf >= N/2))
+
+# Values for median formula
+L <- lower[i]
+h <- upper[i] - lower[i]
+f <- frequency[i]
+
+if(i == 1){
+  cf_prev <- 0
+} else{
+  cf_prev <- cf[i-1]
+}
+
+# Median calculation
+Median <- L + ((N/2 - cf_prev)/f) * h
+
+print(Median)
+
+
